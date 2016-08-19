@@ -75,6 +75,66 @@ public class Sax_Parsing extends DefaultHandler {
         }
     }
 
+    public void setSesionesPeliculas(Vector sesionesPeliculas) {
+        this.sesionesPeliculas = sesionesPeliculas;
+    }
+
+    public void setSesionesStrPelicula(Vector sesionesStrPelicula) {
+        this.sesionesStrPelicula = sesionesStrPelicula;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public void setActores(String actores) {
+        this.actores = actores;
+    }
+
+    public void setTextoSesion(String textoSesion) {
+        this.textoSesion = textoSesion;
+    }
+
+    public void setEsTextoSesion(boolean esTextoSesion) {
+        this.esTextoSesion = esTextoSesion;
+    }
+
+    public Vector getSesionesStrPelicula() {
+        return sesionesStrPelicula;
+    }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public String getActores() {
+        return actores;
+    }
+
+    public String getTextoSesion() {
+        return textoSesion;
+    }
+
+    public boolean isEsTextoSesion() {
+        return esTextoSesion;
+    }
+
     public void endElement(String namespaceURI,
             String sName, String qName)
             throws SAXException {
@@ -103,8 +163,8 @@ public class Sax_Parsing extends DefaultHandler {
     public static void main(String[] args) {
         
         Sax_Parsing sax = new Sax_Parsing("/home/darkaliensky/Escritorio/ejemploSax.xml");
-        System.out.println(sax.actores);
-        System.out.print(sax.getSesionesPeliculas());
+        System.out.println(sax.getActores());
+        System.out.println(sax.getSesionesStrPelicula());
         
     }
 
