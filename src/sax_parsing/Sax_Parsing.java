@@ -83,8 +83,7 @@ public class Sax_Parsing extends DefaultHandler {
             Pelicula pelicula = new Pelicula(this.codigo, this.titulo,
                     this.director,
                     this.actores);
-            // Añadimos nuevo objeto SesionesPelicula a vector
-            sesionesPeliculas
+            // Añadimos nuevo objeto SesionesPelicula a vector sesionesPeliculas
             this.sesionesPeliculas.add(new SesionesPelicula(pelicula,
                     this.sesionesStrPelicula));
         } else if (qName.equals("Sesion")) {
