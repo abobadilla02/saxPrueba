@@ -11,17 +11,17 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 public class Sax_Parsing extends DefaultHandler {
-// Atributos en los que se cachea el estado de SesionesPelicula
-// Vector con todas las sesiones por pelicula de este cine
+    // Atributos en los que se cachea el estado de SesionesPelicula
+    // Vector con todas las sesiones por pelicula de este cine
 
     private Vector sesionesPeliculas;
-// Vector con los strings de horarios de todas las sesiones de una pelicula
+    // Vector con los strings de horarios de todas las sesiones de una pelicula
     private Vector sesionesStrPelicula;
-// Metadata asociada a una película
+    // Metadata asociada a una película
     private String codigo, titulo, director, actores;
-// Contenido textual de una sesión
+    // Contenido textual de una sesión
     private String textoSesion;
-// Flag que indica si estamos parseando el contenido de texto de una sesión
+    // Flag que indica si estamos parseando el contenido de texto de una sesión
     private boolean esTextoSesion = false;
 
     public Sax_Parsing(String url) {
@@ -101,7 +101,11 @@ public class Sax_Parsing extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-
+        
+        Sax_Parsing sax = new Sax_Parsing("/home/darkaliensky/Escritorio/ejemploSax.xml");
+        System.out.println(sax.actores);
+        System.out.print(sax.getSesionesPeliculas());
+        
     }
 
 }
