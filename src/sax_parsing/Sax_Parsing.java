@@ -42,7 +42,7 @@ public class Sax_Parsing extends DefaultHandler {
     public void startElement(String namespaceURI, String lName,
             String qName, Attributes attrs)
             throws SAXException {
-            // lname --> contiene el nombre local (sin prefijo), o el string vacio
+        // lname --> contiene el nombre local (sin prefijo), o el string vacio
         // si procesamiento de namespaces no se lleva a cabo.
         // qname --> el nombre cualificado (con prefijo), o el string vacío si
         // namespaces no activo
@@ -60,6 +60,45 @@ public class Sax_Parsing extends DefaultHandler {
             this.esTextoSesion = true;
             this.textoSesion = "";
         }
+    }
+
+    public void characters(char[] ch, int start, int length) {
+        if (this.esTextoSesion == true) {
+            // Sólo si estamos dentro de un elemento sesión
+            // recogemos su contenido.
+            // Si el contenido es largo este método
+            //callback puede ser 
+            // invocado varias veces por el parser SAX
+
+            this.textoSesion += (new String(ch, start,
+                    length)).trim();
+        }
+    }
+
+    public void endElement(String namespaceURI,
+            String sName, String qName)
+            throws SAXException {
+        if (qName.equals("Pelicula")) {
+            // Salvamos los detalles de una pelicula en un objeto
+            Pelicula pelicula = new Pelicula(this.codigo, this.titulo,
+                    this.director,
+                    this.actores);
+            // Añadimos nuevo objeto SesionesPelicula a vector
+            sesionesPeliculas
+            this.sesionesPeliculas.add(new SesionesPelicula(pelicula,
+                    this.sesionesStrPelicula));
+        } else if (qName.equals("Sesion")) {
+// Por cada sesión salvar el texto conteniendo horario sesión
+            this.esTextoSesion = false;
+            this.sesionesStrPelicula.add(this.textoSesion);
+        }
+    }
+
+    // Método para recuperar vector con
+    // objetos SesionesPelicula creados
+    // en parsing
+    public Vector getSesionesPeliculas() {
+        return this.sesionesPeliculas;
     }
 
     public static void main(String[] args) {
