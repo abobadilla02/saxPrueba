@@ -167,5 +167,4 @@ public class Sax_Parsing extends DefaultHandler {
         System.out.println(sax.getSesionesStrPelicula());
         
     }
-
 }
